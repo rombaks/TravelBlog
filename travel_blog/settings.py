@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "travel_blog.main.apps.MainConfig",
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,8 @@ DATABASES = {
     },
 }
 
+# User model
+AUTH_USER_MODEL = "main.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
