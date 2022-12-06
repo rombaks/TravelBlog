@@ -11,6 +11,10 @@ psycopg2-binary = "^2.9.5"
 djangorestframework = "^3.14.0"
 black = "^22.10.0"
 isort = "^5.10.1"
+django-filter = "^22.1"
+Markdown = "^3.4.1"
+flake8 = "^6.0.0"
+mypy = "^0.991"
 
 [tool.black]
 line-length = 100
