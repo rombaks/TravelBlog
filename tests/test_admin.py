@@ -3,8 +3,8 @@ from typing import Container, Type
 
 from django.db import models
 from django.urls import reverse
-from rest_framework.test import APIClient, APITestCase
 
+from rest_framework.test import APIClient, APITestCase
 from travel_blog.main.models import Post, Tag, User
 
 

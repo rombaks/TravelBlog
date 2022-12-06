@@ -3,6 +3,7 @@ from django.db import models
 from .tag import Tag
 from .user import User
 
+
 STATUS = ((0, "Draft"), (1, "Publish"))
 
 
