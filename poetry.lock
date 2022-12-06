@@ -46,14 +46,6 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
-name = "cfgv"
-version = "3.3.1"
-description = "Validate configuration and produce human readable error messages."
-category = "main"
-optional = false
-python-versions = ">=3.6.1"
-
-[[package]]
 name = "click"
 version = "8.1.3"
 description = "Composable command line interface toolkit"
@@ -73,14 +65,6 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 
 [[package]]
-name = "distlib"
-version = "0.3.6"
-description = "Distribution utilities"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "django"
 version = "4.1.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -96,6 +80,17 @@ tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 [package.extras]
 argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-filter"
+version = "22.1"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Django = ">=3.2"
 
 [[package]]
 name = "djangorestframework"
@@ -121,18 +116,6 @@ python-versions = ">=3.7"
 test = ["pytest (>=6)"]
 
 [[package]]
-name = "filelock"
-version = "3.8.0"
-description = "A platform independent file lock."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.extras]
-docs = ["furo (>=2022.6.21)", "sphinx (>=5.1.1)", "sphinx-autodoc-typehints (>=1.19.1)"]
-testing = ["covdefaults (>=2.2)", "coverage (>=6.4.2)", "pytest (>=7.1.2)", "pytest-cov (>=3)", "pytest-timeout (>=2.1)"]
-
-[[package]]
 name = "flake8"
 version = "6.0.0"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -146,15 +129,20 @@ pycodestyle = ">=2.10.0,<2.11.0"
 pyflakes = ">=3.0.0,<3.1.0"
 
 [[package]]
-name = "identify"
-version = "2.5.9"
-description = "File identification library for Python"
+name = "importlib-metadata"
+version = "5.1.0"
+description = "Read metadata from Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
+[package.dependencies]
+zipp = ">=0.5"
+
 [package.extras]
-license = ["ukkonen"]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "jaraco.tidelift (>=1.4)"]
+perf = ["ipython"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8", "importlib-resources (>=1.3)"]
 
 [[package]]
 name = "iniconfig"
@@ -177,6 +165,20 @@ pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
 requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
 plugins = ["setuptools"]
+
+[[package]]
+name = "markdown"
+version = "3.4.1"
+description = "Python implementation of Markdown."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+importlib-metadata = {version = ">=4.4", markers = "python_version < \"3.10\""}
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
 
 [[package]]
 name = "mccabe"
@@ -212,14 +214,6 @@ description = "Experimental type system extensions for programs checked with the
 category = "main"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "nodeenv"
-version = "1.7.0"
-description = "Node.js virtual environment builder"
-category = "main"
-optional = false
-python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*"
 
 [[package]]
 name = "packaging"
@@ -263,22 +257,6 @@ python-versions = ">=3.6"
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
-
-[[package]]
-name = "pre-commit"
-version = "2.20.0"
-description = "A framework for managing and maintaining multi-language pre-commit hooks."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-cfgv = ">=2.0.0"
-identify = ">=1.0.0"
-nodeenv = ">=0.11.1"
-pyyaml = ">=5.1"
-toml = "*"
-virtualenv = ">=20.0.8"
 
 [[package]]
 name = "psycopg2-binary"
@@ -359,28 +337,12 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "pyyaml"
-version = "6.0"
-description = "YAML parser and emitter for Python"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
 category = "main"
 optional = false
 python-versions = ">=3.5"
-
-[[package]]
-name = "toml"
-version = "0.10.2"
-description = "Python Library for Tom's Obvious, Minimal Language"
-category = "main"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "tomli"
@@ -407,52 +369,44 @@ optional = false
 python-versions = ">=2"
 
 [[package]]
-name = "virtualenv"
-version = "20.17.0"
-description = "Virtual Python Environment builder"
+name = "zipp"
+version = "3.11.0"
+description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "main"
 optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-distlib = ">=0.3.6,<1"
-filelock = ">=3.4.1,<4"
-platformdirs = ">=2.4,<3"
+python-versions = ">=3.7"
 
 [package.extras]
-docs = ["proselint (>=0.13)", "sphinx (>=5.3)", "sphinx-argparse (>=0.3.2)", "sphinx-rtd-theme (>=1)", "towncrier (>=22.8)"]
-testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=21.3)", "pytest (>=7.0.1)", "pytest-env (>=0.6.2)", "pytest-freezegun (>=0.4.2)", "pytest-mock (>=3.6.1)", "pytest-randomly (>=3.10.3)", "pytest-timeout (>=2.1)"]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "jaraco.tidelift (>=1.4)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "func-timeout", "jaraco.functools", "more-itertools", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "db75b27ac18863a1e21d845a5978277a240e66dede7a031d7303aa9db42bf0ab"
+content-hash = "3bd5f595b4baa3901018cf01e50959fea3ad36dc2e7531e77f36e3d2138b35fb"
 
 [metadata.files]
 asgiref = []
 attrs = []
 black = []
-cfgv = []
 click = []
 colorama = []
-distlib = []
 django = []
+django-filter = []
 djangorestframework = []
 exceptiongroup = []
-filelock = []
 flake8 = []
-identify = []
+importlib-metadata = []
 iniconfig = []
 isort = []
+markdown = []
 mccabe = []
 mypy = []
 mypy-extensions = []
-nodeenv = []
 packaging = []
 pathspec = []
 platformdirs = []
 pluggy = []
-pre-commit = []
 psycopg2-binary = []
 pycodestyle = []
 pyflakes = []
@@ -460,10 +414,8 @@ pyparsing = []
 pytest = []
 pytest-django = []
 pytz = []
-pyyaml = []
 sqlparse = []
-toml = []
 tomli = []
 typing-extensions = []
 tzdata = []
-virtualenv = []
+zipp = []
