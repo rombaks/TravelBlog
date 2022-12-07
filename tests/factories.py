@@ -23,15 +23,14 @@ class TagFactory(factory.django.DjangoModelFactory):
 class PostFactory(factory.django.DjangoModelFactory):
     title = factory.LazyAttribute(lambda _: faker.text(max_nb_chars=10))
     content = factory.LazyAttribute(lambda _: faker.text(max_nb_chars=50))
-    author = factory.SubFactory(UserFactory)
     created_at = factory.LazyAttribute(lambda _: faker.past_datetime().strftime("%Y-%m-%dT%XZ"))
     updated_at = factory.LazyAttribute(lambda _: faker.past_datetime().strftime("%Y-%m-%dT%XZ"))
-
+    slug = "mock-super-puper-slug"
     status = factory.LazyAttribute(
         lambda _: faker.word(
             ext_word_list=[
-                "new",
-                "in_development",
+                0,
+                1,
             ]
         )
     )
