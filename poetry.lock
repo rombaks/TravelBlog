@@ -126,6 +126,18 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-autoslug"
+version = "1.9.8"
+description = "An automated slug field for Django."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+cyrillic = ["pytils (>=0.2)"]
+translitcodec = ["translitcodec (>=0.3)"]
+
+[[package]]
 name = "django-filter"
 version = "22.1"
 description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
@@ -602,7 +614,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "357eba58bf8662bf73a89f09995d49a71d04ea7daaa24a7d50f3063dae4876bc"
+content-hash = "233287977719c61b6f5b404bbd5681765e6f8fbdcd3ccde25bde20ecf02c47ad"
 
 [metadata.files]
 asgiref = []
@@ -615,6 +627,7 @@ colorama = []
 coreapi = []
 coreschema = []
 django = []
+django-autoslug = []
 django-filter = []
 djangorestframework = []
 drf-yasg = []
