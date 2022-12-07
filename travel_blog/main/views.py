@@ -12,11 +12,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class PostViewSet(viewsets.ModelViewSet):
+    lookup_field = "slug"
     queryset = Post.objects.prefetch_related("author", "tags").order_by("id")
     serializer_class = PostSerializer
     filterset_class = PostFilter
 
 
 class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.order_by("title")
+    queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer

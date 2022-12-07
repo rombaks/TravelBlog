@@ -35,3 +35,5 @@ class PostSerializer(serializers.ModelSerializer):
             "content",
             "tags",
         )
+
+        extra_kwargs = {"url": {"lookup_field": "slug"}}
