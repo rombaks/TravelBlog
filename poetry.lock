@@ -46,6 +46,25 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
+name = "certifi"
+version = "2022.9.24"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "charset-normalizer"
+version = "2.1.1"
+description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.extras]
+unicode_backport = ["unicodedata2"]
+
+[[package]]
 name = "click"
 version = "8.1.3"
 description = "Composable command line interface toolkit"
@@ -63,6 +82,31 @@ description = "Cross-platform colored terminal text."
 category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
+name = "coreapi"
+version = "2.3.3"
+description = "Python client library for Core API."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+coreschema = "*"
+itypes = "*"
+requests = "*"
+uritemplate = "*"
+
+[[package]]
+name = "coreschema"
+version = "0.0.4"
+description = "Core Schema."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+jinja2 = "*"
 
 [[package]]
 name = "django"
@@ -105,6 +149,28 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
+name = "drf-yasg"
+version = "1.21.4"
+description = "Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+coreapi = ">=2.3.3"
+coreschema = ">=0.0.4"
+django = ">=2.2.16"
+djangorestframework = ">=3.10.3"
+inflection = ">=0.3.1"
+packaging = ">=21.0"
+pytz = ">=2021.1"
+"ruamel.yaml" = ">=0.16.13"
+uritemplate = ">=3.0.0"
+
+[package.extras]
+validation = ["swagger-spec-validator (>=2.1.0)"]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.0.4"
 description = "Backport of PEP 654 (exception groups)"
@@ -129,6 +195,14 @@ pycodestyle = ">=2.10.0,<2.11.0"
 pyflakes = ">=3.0.0,<3.1.0"
 
 [[package]]
+name = "idna"
+version = "3.4"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "importlib-metadata"
 version = "5.1.0"
 description = "Read metadata from Python packages"
@@ -143,6 +217,14 @@ zipp = ">=0.5"
 docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "jaraco.tidelift (>=1.4)"]
 perf = ["ipython"]
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8", "importlib-resources (>=1.3)"]
+
+[[package]]
+name = "inflection"
+version = "0.5.1"
+description = "A port of Ruby on Rails inflector to Python"
+category = "main"
+optional = false
+python-versions = ">=3.5"
 
 [[package]]
 name = "iniconfig"
@@ -167,6 +249,28 @@ colors = ["colorama (>=0.4.3,<0.5.0)"]
 plugins = ["setuptools"]
 
 [[package]]
+name = "itypes"
+version = "1.2.0"
+description = "Simple immutable types for python."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "jinja2"
+version = "3.1.2"
+description = "A very fast and expressive template engine."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = ">=2.0"
+
+[package.extras]
+i18n = ["Babel (>=2.7)"]
+
+[[package]]
 name = "markdown"
 version = "3.4.1"
 description = "Python implementation of Markdown."
@@ -179,6 +283,14 @@ importlib-metadata = {version = ">=4.4", markers = "python_version < \"3.10\""}
 
 [package.extras]
 testing = ["coverage", "pyyaml"]
+
+[[package]]
+name = "markupsafe"
+version = "2.1.1"
+description = "Safely add untrusted strings to HTML/XML markup."
+category = "main"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "mccabe"
@@ -219,7 +331,7 @@ python-versions = "*"
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -286,7 +398,7 @@ python-versions = ">=3.6"
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.8"
 
@@ -337,6 +449,47 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "requests"
+version = "2.28.1"
+description = "Python HTTP for Humans."
+category = "main"
+optional = false
+python-versions = ">=3.7, <4"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+charset-normalizer = ">=2,<3"
+idna = ">=2.5,<4"
+urllib3 = ">=1.21.1,<1.27"
+
+[package.extras]
+socks = ["PySocks (>=1.5.6,!=1.5.7)"]
+use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "ruamel.yaml"
+version = "0.17.21"
+description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
+category = "main"
+optional = false
+python-versions = ">=3"
+
+[package.dependencies]
+"ruamel.yaml.clib" = {version = ">=0.2.6", markers = "platform_python_implementation == \"CPython\" and python_version < \"3.11\""}
+
+[package.extras]
+docs = ["ryd"]
+jinja2 = ["ruamel.yaml.jinja2 (>=0.2)"]
+
+[[package]]
+name = "ruamel.yaml.clib"
+version = "0.2.7"
+description = "C version of reader, parser and emitter for ruamel.yaml derived from libyaml"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
@@ -369,6 +522,27 @@ optional = false
 python-versions = ">=2"
 
 [[package]]
+name = "uritemplate"
+version = "4.1.1"
+description = "Implementation of RFC 6570 URI Templates"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "urllib3"
+version = "1.26.13"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+
+[package.extras]
+brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+
+[[package]]
 name = "zipp"
 version = "3.11.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -383,23 +557,33 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "3bd5f595b4baa3901018cf01e50959fea3ad36dc2e7531e77f36e3d2138b35fb"
+content-hash = "768967a0cc837316f45b964e7940de66f0a1e9a1f60533aeb6df1de2f7b0539d"
 
 [metadata.files]
 asgiref = []
 attrs = []
 black = []
+certifi = []
+charset-normalizer = []
 click = []
 colorama = []
+coreapi = []
+coreschema = []
 django = []
 django-filter = []
 djangorestframework = []
+drf-yasg = []
 exceptiongroup = []
 flake8 = []
+idna = []
 importlib-metadata = []
+inflection = []
 iniconfig = []
 isort = []
+itypes = []
+jinja2 = []
 markdown = []
+markupsafe = []
 mccabe = []
 mypy = []
 mypy-extensions = []
@@ -414,8 +598,13 @@ pyparsing = []
 pytest = []
 pytest-django = []
 pytz = []
+requests = []
+"ruamel.yaml" = []
+"ruamel.yaml.clib" = []
 sqlparse = []
 tomli = []
 typing-extensions = []
 tzdata = []
+uritemplate = []
+urllib3 = []
 zipp = []
