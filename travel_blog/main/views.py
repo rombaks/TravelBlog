@@ -1,3 +1,5 @@
+from django.views.generic import TemplateView
+
 from rest_framework import viewsets
 
 from .filters import PostFilter, UserFilter
@@ -21,3 +23,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class TagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.order_by("id")
     serializer_class = TagSerializer
+
+
+class Home(TemplateView):
+    template_name = "home.html"
