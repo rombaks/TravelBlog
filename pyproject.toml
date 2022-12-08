@@ -19,6 +19,7 @@ drf-yasg = "^1.21.4"
 factory-boy = "^3.2.1"
 Faker = "^15.3.4"
 django-autoslug = "^1.9.8"
+django-allauth = "^0.51.0"
 
 [tool.black]
 line-length = 100
