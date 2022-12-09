@@ -7,6 +7,7 @@ lint:
 test:
 	coverage run -m pytest
 	coverage report
+	coveralls
 
 check: lint test
 

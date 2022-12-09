@@ -131,6 +131,22 @@ python-versions = ">=3.7"
 toml = ["tomli"]
 
 [[package]]
+name = "coveralls"
+version = "3.3.1"
+description = "Show coverage stats online via coveralls.io"
+category = "main"
+optional = false
+python-versions = ">= 3.5"
+
+[package.dependencies]
+coverage = ">=4.1,<6.0.0 || >6.1,<6.1.1 || >6.1.1,<7.0"
+docopt = ">=0.6.1"
+requests = ">=1.0.0"
+
+[package.extras]
+yaml = ["PyYAML (>=3.10)"]
+
+[[package]]
 name = "cryptography"
 version = "38.0.4"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -223,6 +239,14 @@ python-versions = ">=3.6"
 [package.dependencies]
 django = ">=3.0"
 pytz = "*"
+
+[[package]]
+name = "docopt"
+version = "0.6.2"
+description = "Pythonic argument parser, that will make you smile"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "drf-yasg"
@@ -746,7 +770,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "14b45ede0f9c5ef9ede8912a63b6e139f86b1dd6a51c330471ceb13b7b7d316a"
+content-hash = "72fd69a1af45b1c3f8e54c9b519353b67cc36f88d4cda259faa949cee2da7a9b"
 
 [metadata.files]
 asgiref = []
@@ -760,6 +784,7 @@ colorama = []
 coreapi = []
 coreschema = []
 coverage = []
+coveralls = []
 cryptography = []
 defusedxml = []
 django = []
@@ -767,6 +792,7 @@ django-allauth = []
 django-autoslug = []
 django-filter = []
 djangorestframework = []
+docopt = []
 drf-yasg = []
 exceptiongroup = []
 factory-boy = []
