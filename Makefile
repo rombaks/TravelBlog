@@ -5,7 +5,8 @@ lint:
 	isort --check-only .
 
 test:
-	pytest
+	coverage run -m pytest
+	coverage report
 
 check: lint test
 
