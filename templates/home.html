@@ -3,13 +3,14 @@
 {% block content %}
 
 <div class="container" style="text-align: center; padding-top: 10%;">
-  <h1>Django Social Login</h1>
+  <h1>Welcome to Travel blog!</h1>
 
   <br /><br />
 
   {% if user.is_authenticated %}
-    <h3>Welcome {{ user.username }} !!!</h3>
+    <h3>Nice to meet you, {{ user.username }}!</h3>
     <br /><br />
+    <a href="{% url 'posts' %}" class="btn btn-secondary">Create post</a>
     <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
   {% else %}
 
