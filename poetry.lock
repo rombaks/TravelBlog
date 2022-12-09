@@ -120,6 +120,17 @@ python-versions = "*"
 jinja2 = "*"
 
 [[package]]
+name = "coverage"
+version = "6.5.0"
+description = "Code coverage measurement for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+toml = ["tomli"]
+
+[[package]]
 name = "cryptography"
 version = "38.0.4"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -735,7 +746,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-co
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "48c4fbbdbbb938b63cefcbdd2107f36e43b9d5339240ccdbae421420dc511e00"
+content-hash = "14b45ede0f9c5ef9ede8912a63b6e139f86b1dd6a51c330471ceb13b7b7d316a"
 
 [metadata.files]
 asgiref = []
@@ -748,6 +759,7 @@ click = []
 colorama = []
 coreapi = []
 coreschema = []
+coverage = []
 cryptography = []
 defusedxml = []
 django = []
