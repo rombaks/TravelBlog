@@ -16,6 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Run linters
+        env:
+          DJANGO_ENV: test
+        run: docker-compose --file docker-compose.ci.yml run --rm api make lint
+      
       - name: Run tests
         env:
           COVERAGE: true
