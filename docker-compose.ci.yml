@@ -32,7 +32,8 @@ services:
 
   db:
     image: postgres:12.5-alpine
-    environment: *db-config
+    environment: 
+      <<: *db-config
     logging:
       driver: none
     ports:
