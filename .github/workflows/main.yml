@@ -9,6 +9,8 @@ on:
       - 'develop'
 
 env:
+  DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+
   COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   DATABASE_NAME: ${{ secrets.DATABASE_NAME}}
@@ -32,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+
       - name: Run linters
         env:
           DJANGO_ENV: test
