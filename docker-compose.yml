@@ -1,5 +1,19 @@
 version: '3.7'
 
+x-app-config: &app-config
+  DJANGO_ENV: ${DJANGO_ENV}
+  DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+  COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
+
+x-db-config: &db-config
+  DATABASE_NAME: ${DATABASE_NAME}
+  DATABASE_USER: ${DATABASE_USER}
+  DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  DATABASE_HOST: ${DATABASE_HOST}
+  DATABASE_PORT: ${DATABASE_PORT}
+  CELERY_BROKER_URL: ${CELERY_BROKER_URL}
+  CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
+
 services:
   api:
     build: .
@@ -10,16 +24,11 @@ services:
     ports:
       - 8000:8000
     depends_on:
+      - redis
       - db
     environment: &api-environment
-      DJANGO_ENV: dev
-      DJANGO_SECRET_KEY: secret_key
-
-      DATABASE_NAME: postgres
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: postgres
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432  
+      <<: *app-config
+      <<: *db-config  
     command: python manage.py runserver 0.0.0.0:8000
 
   db:
@@ -29,3 +38,31 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+  
+  redis:
+    image: redis:7-alpine
+
+  celery:
+    build: .
+    command: celery worker --app=travel_blog --loglevel=info --logfile=logs/celery.log
+    volumes:
+      - .:/app
+    environment:
+      <<: *app-config
+      <<: *db-config
+    depends_on:
+      - api
+      - redis
+
+  flower:
+    build: .
+    command: celery -A travel_blog --broker=redis://redis:6379/0 flower --port=5555
+    ports:
+      - 5555:5555
+    environment:
+      <<: *app-config
+      <<: *db-config
+    depends_on:
+      - api
+      - redis
+      - celery
