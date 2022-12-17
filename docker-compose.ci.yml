@@ -6,11 +6,12 @@ x-app-config: &app-config
   COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
 
 x-db-config: &db-config
-  DATABASE_NAME: ${DATABASE_NAME}
-  DATABASE_USER: ${DATABASE_USER}
-  DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-  DATABASE_HOST: ${DATABASE_HOST}
-  DATABASE_PORT: ${DATABASE_PORT}
+  DATABASE_NAME: postgres
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: postgres
+  DATABASE_HOST: db
+  DATABASE_PORT: 5432
+  POSTGRES_PASSWORD: postgres
   CELERY_BROKER_URL: ${CELERY_BROKER_URL}
   CELERY_RESULT_BACKEND: ${CELERY_RESULT_BACKEND}
 
@@ -46,9 +47,7 @@ services:
     command: celery worker --app=travel_blog --loglevel=info --logfile=logs/celery.log
     volumes:
       - .:/app
-    environment:
-      <<: *app-config
-      <<: *db-config
+    environment: *db-config
     depends_on:
       - api
       - redis
@@ -58,14 +57,11 @@ services:
     command: celery -A travel_blog --broker=redis://redis:6379/0 flower --port=5555
     ports:
       - 5555:5555
-    environment:
-      <<: *app-config
-      <<: *db-config
+    environment: *db-config
     depends_on:
       - api
       - redis
       - celery
-
 
 volumes:
   sqlvolume:
